@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/style.css" />
   <title>5 Day Weather Forecast</title>
 </head>
-<body class="">
+<body>
     <header class="hero">
       <h1 class="title">
          Plan ahead weather dashboard
@@ -20,20 +20,22 @@
         <div class="">
     
           <div class="">
-            <h3 class="user-header"></h3>
-            <form id="user-form" class="content-body">
-              <label class="form-label" for="city">Enter City Name</label>
-              <input name="city-name" id="city-name" type="text" autofocus="true" class="form-input" />
+            <h3 class="input-header"></h3>
+            <form id="user-form" class="form-body">
+              <label class="form-label">Enter City Name</label>
+              <input id="city-name"  class="form-input" />
               <button type="submit" class="btn">Get Forecast</button>
             </form>
           </div>
     
         <div class="results-content">
-          <h2 class="subtitle">Showing 5 day Weather Forecast for: <span id="city-search"></span></h2>
-          <div id="results-container" class="forecast"></div>
+          <h2 class="subtitle">Showing Weather Forecast for: <span id="city-search"></span></h2>
+          <div id="results-container" class="current"></div>
+           <div id="forecast-five" class="five-day"></div>
         </div>
       </main>
-    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
       <script src="./assets/script.js"></script>
     </body>
     
