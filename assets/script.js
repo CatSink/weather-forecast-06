@@ -1,19 +1,20 @@
 //add curl request for geographic lat and long coordinates for cities; then get curl for weather forecast
 var apiKey = '0a11094e258df57717907ca4f7fdba17';
+var url = 'http://openweathermap.org/';
 var userFormEl = document.querySelector('#user-form');
 //selects the form element for user input/search
 var nameInputEl = document.querySelector('#city-name');
-//selects the input for user name
+//selects the input for city name
 var resultsContainerEl = document.querySelector('#results-container');
-var currentCity;
 
+//get weather event handler  to trigger city search
 var getCoordinates = function () {
   var apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&appid=${apiKey}`;
   var searchHistory= JSON.parse(localStorage.getItem('city-search-history')) || [];  
  //function for saving user search history and getting city coordinates
   fetch(apiUrl)
     .then(function (response) {
-        if (response.statusCode === 200 && response.statusCode <=299) {
+        if (response.statusCode.ok) {
             return response.json();
         } else { 
           throw new Error(response.statusText);
@@ -21,7 +22,7 @@ var getCoordinates = function () {
     })
      .then(function (data) {        
       var convertCity = {
-        city: currentCity,
+        city: userFormEl.value,
         lat: data.coord.lat,
         lon: data.coord.lon
       };
@@ -44,6 +45,21 @@ function getForecast(data) {
         return response.json();
 
      });
-} 
+    }
+    //where to add links for timezone plugins? 
+    //var utc = require('dayjs/plugin/utc');
+   // var timezone = require('dayjs/plugin/timezone');
+    //dayjs.extend(utc);
+    //dayjs.extend(timezone);
+
+  // setInterval(function () {
+   // $('#results-container').text(dayjs.format('MM/dd/yyyy,hh:mm:ss'));
+   //}, 1000);
+//define dayjs
+
  //need to select content to import from API data, temp, humidity, wind, and icon    
-      
+   var temperature = document.getElementById("results-container");
+   var humidity = document.getElementById("results-container");
+   var wind = document.getElementById("results-container");
+   var icon = document.getElementById("results-container"); 
+   //append elements/add styles in for loop 
