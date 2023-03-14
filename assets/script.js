@@ -1,18 +1,20 @@
 //add curl request for geographic lat and long coordinates for cities; then get curl for weather forecast
 var apiKey = '0a11094e258df57717907ca4f7fdba17';
-var url = 'http://openweathermap.org/';
-var userFormEl = document.querySelector('#user-form');
+var userFormEl = document.getElementById('user-form');
 //selects the form element for user input/search
-var nameInputEl = document.querySelector('#city-name');
+var nameInputEl = document.getElementById('city-name');
 //selects the input for city name
-var resultsContainerEl = document.querySelector('#results-container');
-
-//get weather event handler  to trigger city search
-var getCoordinates = function () {
+var resultsContainerEl = document.getElementById('results-container');
+var extendedForecast = document.getElementById('forecast-five');
+var citySearch = document.getElementById('submit');
+getCoordinates = function () {
   var apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&appid=${apiKey}`;
   var searchHistory= JSON.parse(localStorage.getItem('city-search-history')) || [];  
+  //event listener to call convertCity function
+  citySearchElement.addEventListener('click', (getCoordinates)) 
  //function for saving user search history and getting city coordinates
   fetch(apiUrl)
+  console.log(apiUrl)
     .then(function (response) {
         if (response.statusCode.ok) {
             return response.json();
