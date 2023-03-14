@@ -1,5 +1,5 @@
 //add curl request for geographic lat and long coordinates for cities; then get curl for weather forecast
-var apiKey = '0a11094e258df57717907ca4f7fdba17';
+var apiKey = '8bea492d6230a9ebee13e2ecfbe6d5cf';
 var userFormEl = document.getElementById('user-form');
 //selects the form element for user input/search
 var nameInputEl = document.getElementById('city-name');
